@@ -7,29 +7,41 @@
  */
 function convertToObject(sourceString) {
   // write your code here
-  const result = {};
-  const items = sourceString.split(';');
+  // const StylesObject = {};
+  // const items = sourceString.split(';');
 
-  for (let item of items) {
-    item = item.trim();
+  // for (let item of items) {
+  //   item = item.trim();
 
-    if (!item) {
-      continue;
-    }
+  //   if (!item) {
+  //     continue;
+  //   }
 
-    if (!item.includes(':')) {
-      continue;
-    }
+  //   if (!item.includes(':')) {
+  //     continue;
+  //   }
 
-    const [property, ...valueParts] = item.split(':');
+  //   const [property, ...valueParts] = item.split(':');
 
-    const key = property.trim();
-    const value = valueParts.join(':').trim();
+  //   const key = property.trim();
+  //   const value = valueParts.join(':').trim();
 
-    result[key] = value;
-  }
+  //   StylesObject[key] = value;
+  // }
+  return sourceString
+    .split(';')
+    .map((item) => item.trim())
+    .filter((item) => item.includes(':'))
+    .map((item) => {
+      const [property, ...valueParts] = item.split(':');
 
-  return result;
+      return [property.trim(), valueParts.join(':').trim()];
+    })
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+
+      return acc;
+    }, {});
 }
 
 module.exports = convertToObject;
