@@ -31,6 +31,5 @@ function convertToObject(sourceString) {
 
   return result;
 }
-convertToObject('lox: pedalnii; kuk: navigator');
 
 module.exports = convertToObject;
