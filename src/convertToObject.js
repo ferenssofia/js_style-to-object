@@ -28,6 +28,8 @@ function convertToObject(sourceString) {
 
   //   StylesObject[key] = value;
   // }
+
+
   return sourceString
     .split(';')
     .map((item) => item.trim())
