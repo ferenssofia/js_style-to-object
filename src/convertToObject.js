@@ -37,10 +37,10 @@ function convertToObject(sourceString) {
 
       return [property.trim(), valueParts.join(':').trim()];
     })
-    .reduce((acc, [key, value]) => {
-      acc[key] = value;
+    .reduce((stylesObject, [key, value]) => {
+      stylesObject[key] = value;
 
-      return acc;
+      return stylesObject;
     }, {});
 }
 
